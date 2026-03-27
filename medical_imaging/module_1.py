@@ -215,9 +215,9 @@ def metrics_tables(image, recons_fbp, recons_gd, row_values, angle_counts, title
                 results_list.append({
                     'row'   : row_label,
                     'angles' : str(ang),
-                    'rmse'   : f'{rmse:.4f}',
-                    'psnr'   : f'{psnr:.4f}',
-                    'ssim'   : f'{ssim:.4f}',
+                    'rmse'   : f'{rmse:.5f}',
+                    'psnr'   : f'{psnr:.2f}',
+                    'ssim'   : f'{ssim:.5f}',
                 })
 
     # build tables, using pale colors to differentiate algorithms
@@ -253,6 +253,7 @@ def error_maps(image, recons_fbp, recons_gd, row_values, angle_counts, title='Ab
 
     """Plot two grids of absolute error maps for FBP and GD reconstructions."""
 
+    # set image dimensions
     h, w = image.shape
 
     # two 3x3 grids side by side
@@ -300,3 +301,128 @@ def error_maps(image, recons_fbp, recons_gd, row_values, angle_counts, title='Ab
 # ---------------------------------------------------------------------------
 
 # I added use_angle_labels=False to all the functions above to make them reusable for both dose and angle range comparisons
+
+# ---------------------------------------------------------------------------
+# Exercise 1.3a: FBP filters
+# ---------------------------------------------------------------------------
+
+# ---------------------------------------------------------------------------
+# Exercise 1.3b: Filter comparison
+# ---------------------------------------------------------------------------
+
+def plot_comparisons(image, recons, title='Algorithm Comparison'):
+
+    """Plot ground truth alongside reconstructions using different algorithms."""
+
+    # number of recons determines subplots
+    n = len(recons)
+
+    fig, axes = plt.subplots(1, n + 1, figsize=(4 * (n + 1), 5))
+    fig.suptitle(title, fontsize=16, y=1.02)
+
+    # # display original image with a grayscale colormap, setting vmin/vmax for consistent scaling
+    axes[0].imshow(image, cmap='gray', vmin=0, vmax=image.max())
+    axes[0].set_title('Ground Truth', fontsize=10)
+    axes[0].axis('off')                                
+
+    # plot each reconstruction in remaining subplots
+    for ax, (name, recon) in zip(axes[1:], recons.items()):
+
+        # set image dimensions
+        h, w = image.shape
+
+        # compute metrics, setting data range to max pixel value for scaling
+        rmse = float(np.sqrt(np.mean((image - recon[:h, :w]) ** 2)))
+        psnr = float(peak_signal_noise_ratio(image, recon[:h, :w], data_range=image.max()))
+        ssim = float(structural_similarity(image, recon[:h, :w], data_range=image.max()))
+
+        # display reconstruction with a grayscale colormap, setting vmin/vmax for consistent scaling, 
+        ax.imshow(recon[:h, :w], cmap='gray', vmin=0, vmax=image.max())
+
+         # format title with filter name bold and metrics on one line below
+        ax.set_title(f'{name}\nRMSE={rmse:.5f} | PSNR={psnr:.2f} dB | SSIM={ssim:.5f}', fontsize=10)
+
+        ax.axis('off')
+
+    plt.tight_layout()
+
+# ---------------------------------------------------------------------------
+# Exercise 1.3c: OS-SART comparison
+# ---------------------------------------------------------------------------
+
+def reconstruct_os(sinogram_noisy, theta, n_subsets=10, n_iterations=20, gamma=0.001):
+
+    """Reconstruct a CT image using OS-SART (mini-batch gradient descent). """
+
+    # initialise the estimate as all zeros
+    os = np.zeros((sinogram_noisy.shape[0], sinogram_noisy.shape[0]))
+
+    # create lists to store residual norm
+    residuals = []
+    n_angles  = len(theta)
+
+    # split angles into subsets, spreading out the angles in each set to cover full range
+    subset_indices = [np.arange(s, n_angles, n_subsets) for s in range(n_subsets)]
+
+    for _ in range(n_iterations):
+
+        for idx in subset_indices:
+
+            # extract subset sinogram and angles
+            sinogram_subset  = sinogram_noisy[:, idx]
+            theta_subset = theta[idx]
+
+            # compute forward projection and calculate residual for subset
+            residual = radon(os, theta=theta_subset) - sinogram_subset
+
+            # backproject residual to get gradient
+            update = - gamma * iradon(residual, theta=theta_subset, filter_name=None)
+
+            # update image estimate
+            os = os + update
+
+        # compute and store residual norm at end of each iteration
+        full_residual = radon(os, theta=theta) - sinogram_noisy
+        residuals.append(np.linalg.norm(full_residual))
+
+    # clip to remove any negative values from noise
+    os = np.clip(os, 0, None)
+
+    return os, residuals
+
+# reused plot_comparisons function from above to compare SIRT and OS-SART reconstructions
+
+def plot_convergence(res_sirt, res_ossart, title='SIRT vs OS-SART Convergence'):
+
+    """Plot convergence curves for SIRT and OS-SART on a shared iteration axis """
+
+    # added to help format tick labels
+    from matplotlib.ticker import ScalarFormatter
+
+    _, ax = plt.subplots(figsize=(9, 6))
+
+    # plot SIRT residuals
+    ax.plot(res_sirt, label='SIRT', color='C0', linewidth=1.5)
+
+    # create x positions so we can plot on same axis as SIRT
+    ossart_x = np.linspace(0, len(res_sirt), len(res_ossart))
+
+    # plot OS-SART residuals
+    ax.plot(ossart_x, res_ossart, label='OS-SART', color='C1', linewidth=1.5)
+
+    # set labels and title
+    ax.set_xlabel('Equivalent full iterations')
+    ax.set_ylabel('Residual norm $\\|Ax^k - b\\|$')
+    ax.set_title(title)
+    
+    # add legend
+    ax.legend()
+
+    # Add a faint grid for better readability
+    ax.grid(True, alpha=0.3, linewidth=0.5)
+
+    plt.tight_layout()
+
+# ---------------------------------------------------------------------------
+# End of Module 1 code
+# ---------------------------------------------------------------------------
