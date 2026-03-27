@@ -74,27 +74,32 @@ def simulate_sinogram(image, theta, I0):
     return sinogram_clean, sinogram_noisy
 
 
-def plot_sinograms(sinograms_noisy, I0_values, angle_counts, title='Sinograms'):
+def plot_sinograms(sinograms_noisy, row_values, angle_counts, title='Sinograms', use_angle_labels=False):
     
-    """Plot a 3x3 grid of noisy sinograms across dose levels and angle counts."""
+    """Plot a 3x3 grid of noisy sinograms across dose levels or angular ranges and angle counts."""
 
     fig, axes = plt.subplots(3, 3, figsize=(15, 12))
     fig.suptitle(title, fontsize=16, y=1.02)
 
-    # loop over all angle counts and I0 values
-    for row, ang in enumerate(angle_counts):
+    # loop over all row values (dose levels or angular ranges) and angle counts
+    for row, row_val in enumerate(row_values):
 
-        for col, I0 in enumerate(I0_values):
+        for col, ang in enumerate(angle_counts):
 
             ax   = axes[row, col]
 
             # access the correct sinogram from dictionary
-            sino = sinograms_noisy[(I0, ang)]
+            sino = sinograms_noisy[(row_val, ang)]
 
             # display sinogram as grayscale image, setting vmin/vmax to percentiles to prevent extremes and show structure
             ax.imshow(sino, cmap='gray', aspect='auto',vmin=np.percentile(sino, 1), vmax=np.percentile(sino, 99))
 
-            ax.set_title(f'$I_0=10^{{{int(np.log10(I0))}}}$, {ang} angles', fontsize=12)
+            # format title based on whether we are showing dose or angle range
+            if use_angle_labels:
+                ax.set_title(f'{row_val}° range, {ang} projections', fontsize=12)
+            else:
+                ax.set_title(f'$I_0=10^{{{int(np.log10(row_val))}}}$, {ang} angles', fontsize=12)
+
             ax.set_xlabel('Angle index', fontsize=10)
             ax.set_ylabel('Detector bin', fontsize=10)
 
@@ -147,33 +152,38 @@ def reconstruct_gd(sinogram_noisy, theta, n_iterations=200, gamma=0.001):
     return gd, residuals
 
 
-def plot_reconstructions(reconstructions, I0_values, angle_counts, title='Reconstructions'):
+def plot_reconstructions(reconstructions, row_values, col_values, title='Reconstructions', use_angle_labels=False):
 
     """Plot a 3x3 grid of reconstructed images across dose levels and angle counts."""
     
-    fig, axes = plt.subplots(3, 3, figsize=(13, 12))
+    fig, axes = plt.subplots(3, 3, figsize=(15, 12))
     fig.suptitle(title, fontsize=16, y=1.02)
 
-    # loop over all angle counts and I0 values
-    for row, ang in enumerate(angle_counts):
+    # loop over all rows and columns
+    for row, r_val in enumerate(row_values):
 
-        for col, I0 in enumerate(I0_values):
+        for col, c_val in enumerate(col_values):
 
             ax    = axes[row, col]
 
             # access the correct reconstruction from dictionary
-            recon = reconstructions[(I0, ang)]
+            recon = reconstructions[(r_val, c_val)]
 
             # display reconstruction as grayscale image, setting vmin/vmax to constants to allow comparison across images
             ax.imshow(recon, cmap='gray', vmin=0, vmax=0.001)
             
-            ax.set_title(f'$I_0=10^{{{int(np.log10(I0))}}}$, {ang} angles', fontsize=12)
+            # format title based on whether we are showing dose or angle range
+            if use_angle_labels:
+                ax.set_title(f'{r_val}° range, {c_val} projections', fontsize=12)
+            else:
+                ax.set_title(f'$I_0=10^{{{int(np.log10(r_val))}}}$, {c_val} angles', fontsize=12)
+
             ax.axis('off')
 
     plt.tight_layout()
 
 
-def metrics_tables(image, recons_fbp, recons_gd, I0_values, angle_counts, title='Image Quality Metrics'):
+def metrics_tables(image, recons_fbp, recons_gd, row_values, angle_counts, title='Image Quality Metrics', use_angle_labels=False):
 
     """Compute RMSE, PSNR and SSIM for all conditions and plot as tables."""
 
@@ -185,16 +195,16 @@ def metrics_tables(image, recons_fbp, recons_gd, I0_values, angle_counts, title=
     gd_results  = []
 
     for ang in angle_counts:
-        for I0 in I0_values:
+        for row_val in row_values:
 
-            # format I0 as power of 10 for readability
-            exp = int(np.log10(I0))
+            # format row label based on whether we are showing dose or angle range
+            row_label = f'{row_val}°' if use_angle_labels else f'$10^{{{int(np.log10(row_val))}}}$'
 
             # access reconstructions for both algorithms
             for results_list, recons in [(fbp_results, recons_fbp), (gd_results, recons_gd)]:
 
                 # crop to match image size
-                recon = recons[(I0, ang)][:h, :w]
+                recon = recons[(row_val, ang)][:h, :w]
 
                 # compute metrics, setting data range to max pixel value for scaling
                 rmse = float(np.sqrt(np.mean((image - recon) ** 2)))
@@ -203,7 +213,7 @@ def metrics_tables(image, recons_fbp, recons_gd, I0_values, angle_counts, title=
 
                 # add results to list
                 results_list.append({
-                    'dose'   : f'$10^{{{exp}}}$',
+                    'row'   : row_label,
                     'angles' : str(ang),
                     'rmse'   : f'{rmse:.4f}',
                     'psnr'   : f'{psnr:.4f}',
@@ -211,14 +221,14 @@ def metrics_tables(image, recons_fbp, recons_gd, I0_values, angle_counts, title=
                 })
 
     # build tables, using pale colors to differentiate algorithms
-    col_labels = ['Dose', 'Angles', 'RMSE', 'PSNR (dB)', 'SSIM']
-    fbp_cells = [[r['dose'], r['angles'], r['rmse'], r['psnr'], r['ssim']] for r in fbp_results]
-    gd_cells  = [[r['dose'], r['angles'], r['rmse'], r['psnr'], r['ssim']] for r in gd_results]
+    col_labels = ['Range', 'Projections', 'RMSE', 'PSNR (dB)', 'SSIM'] if use_angle_labels else ['Dose', 'Projections', 'RMSE', 'PSNR (dB)', 'SSIM']
+    fbp_cells = [[r['row'], r['angles'], r['rmse'], r['psnr'], r['ssim']] for r in fbp_results]
+    gd_cells  = [[r['row'], r['angles'], r['rmse'], r['psnr'], r['ssim']] for r in gd_results]
     fbp_colors = [['#d4e6f1'] * 5] * len(fbp_results)
     gd_colors  = [['#fde8d0'] * 5] * len(gd_results)
 
     # plot tables alongside eachother
-    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(7, len(fbp_results) * 0.5))
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(8, len(fbp_results) * 0.5))
     fig.suptitle(title, fontsize=16, y=1.02)
 
     # add titles and hide axes for both tables
@@ -239,7 +249,7 @@ def metrics_tables(image, recons_fbp, recons_gd, I0_values, angle_counts, title=
     plt.tight_layout()
 
 
-def error_maps(image, recons_fbp, recons_gd, I0_values, angle_counts, title='Absolute Error Maps'):
+def error_maps(image, recons_fbp, recons_gd, row_values, angle_counts, title='Absolute Error Maps', use_angle_labels=False):
 
     """Plot two grids of absolute error maps for FBP and GD reconstructions."""
 
@@ -254,24 +264,25 @@ def error_maps(image, recons_fbp, recons_gd, I0_values, angle_counts, title='Abs
     axes[0, 4].annotate('Gradient Descent (200 iterations)', xy=(0.5, 1.15), xycoords='axes fraction', fontsize=12, ha='center')
 
     for row, ang in enumerate(angle_counts):
-        for col_I0, I0 in enumerate(I0_values):
+        for col_val, row_val in enumerate(row_values):
 
-            # format I0 as power of 10 for readability
-            exp = int(np.log10(I0))
+            # format subplot title based on whether we are showing dose or angle range
+            subplot_title = f'{row_val}° range, {ang} angles' if use_angle_labels else f'$I_0=10^{{{int(np.log10(row_val))}}}$, {ang} angles'
 
             # iterate over both algorithms to plot error maps
             for offset, recons in enumerate([recons_fbp, recons_gd]):
 
                 # set axes for both grids
-                ax    = axes[row, col_I0 + offset * 3]
+                ax  = axes[row, col_val + offset * 3]
 
                 # access and crop reconstructions
-                recon = recons[(I0, ang)][:h, :w]
+                recon = recons[(row_val, ang)][:h, :w]
 
-                # compute ans plot absolute error map
-                err   = np.abs(image - recon)
+                # compute and plot absolute error map
+                err = np.abs(image - recon)
                 ax.imshow(err, vmin=0, vmax=image.max() * 0.3)
-                ax.set_title(f'$I_0=10^{{{exp}}}$, {ang} angles', fontsize=10)
+
+                ax.set_title(subplot_title, fontsize=10)
                 ax.axis('off')
 
     plt.tight_layout()
@@ -279,3 +290,13 @@ def error_maps(image, recons_fbp, recons_gd, I0_values, angle_counts, title='Abs
     # add a vertical line to separate FBP and GD grids
     line = plt.Line2D([0.5, 0.5], [0.01, 0.97], transform=fig.transFigure, color='black', linewidth=1.5)
     fig.add_artist(line)
+
+# ---------------------------------------------------------------------------
+# Exercise 1.2a: limited angle sinograsm
+# ---------------------------------------------------------------------------
+
+# ---------------------------------------------------------------------------
+# Exercise 1.2b: limited angle reconstructions and metrics
+# ---------------------------------------------------------------------------
+
+# I added use_angle_labels=False to all the functions above to make them reusable for both dose and angle range comparisons
