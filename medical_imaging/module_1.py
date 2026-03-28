@@ -352,7 +352,7 @@ def plot_comparisons(image, recons, title='Algorithm Comparison'):
 
 def reconstruct_os(sinogram_noisy, theta, n_subsets=10, n_iterations=20, gamma=0.001):
 
-    """Reconstruct a CT image using OS-SART (mini-batch gradient descent). """
+    """Reconstruct a CT image using OS-SART """
 
     # initialise the estimate as all zeros
     os = np.zeros((sinogram_noisy.shape[0], sinogram_noisy.shape[0]))
@@ -394,7 +394,7 @@ def reconstruct_os(sinogram_noisy, theta, n_subsets=10, n_iterations=20, gamma=0
 
 def plot_convergence(res_sirt, res_ossart, title='SIRT vs OS-SART Convergence'):
 
-    """Plot convergence curves for SIRT and OS-SART on a shared iteration axis """
+    """Plot convergence curves for SIRT and OS-SART on a shared axis """
 
     # added to help format tick labels
     from matplotlib.ticker import ScalarFormatter
