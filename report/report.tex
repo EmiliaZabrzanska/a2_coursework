@@ -73,13 +73,11 @@ The sinogram was obtained using the Radon transform and converted to Beer-Lamber
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.95\textwidth]{figures/fig_1.1b.pdf}
+    \includegraphics[width=0.7\textwidth]{figures/fig_1.1b.pdf}
     \caption{Simulated noisy sinograms across dose levels and projection counts.}
 \end{figure}
 
 \subsubsection*{(c) Reconstruction and analysis}
-
-All sinograms were reconstructed using Filtered Back-Projection (FBP) and Gradient Descent (GD). 
 
 \begin{figure}[H]
     \centering
@@ -93,33 +91,32 @@ All sinograms were reconstructed using Filtered Back-Projection (FBP) and Gradie
     \caption{Gradient Descent (200 iterations) reconstructions.}
 \end{figure}
 
-\noindent Figures 3 and 4 show the FBP and GD reconstructions. 
-Comparing the two reconstruction methods, we can see that FBP works well at high dose ($I_0=10^5$), producing clear reconstructions at both 360 and 90 angles that show the anatomy and artefact correctly. 
-At 20 angles, streaking begins to appear across the image due to undersampling, but the anatomy is still recognisable. 
-For medium doses ($I_0=10^3$), all three reconstructions are heavily noise dominated, and the anatomy is almost entirely unrecognisable, and the case is similar for low dose ($I_0=10^2$), where all reconstructions are completely unrecognisable. \\
+\textbf{What is the performance?}
 
-\noindent I decided to perform three reconstructions for Gradient Descent, of 5, 50 and 200 iterations, however in terms of performace analytics I will only focus on the 200 iteration case. 
+\noindent Figures 3 and 4 show the FBP and GD reconstructions. 
+Comparing the two reconstruction methods, we can see that FBP works well at high dose ($I_0=10^5$), producing clear reconstructions for both 360 and 90 angles. 
+At 20 angles, streaking begins to appear across the image due to undersampling, but the anatomy is still recognisable. 
+For medium doses ($I_0=10^3$), all three reconstructions are heavily noise dominated, and the anatomy is almost entirely unrecognisable, similarly for low dose ($I_0=10^2$), where all reconstructions are completely unrecognisable. \\
+
+\noindent I decided to perform three reconstructions for Gradient Descent, of 5, 50 and 200 iterations, however for the report we focus only on the 200 iteration case. 
 At high dose ($I_0=10^5$), GD produced good anatomy at both 360 and 90 degrees, but with reconstructions appearing slightly softer than FBP. 
 The clear difference between the two can be seen at medium dose ($I_0=10^3$), where the chest outline, its internal structures, and even the artefact are all still visible, whereas this was not the case for FBP. 
-GD still struggled at low dose ($I_0=10^2$), but some structural information can still be recovered from the 360 angle plot, but overall the noise did dominate the reconstruction at this level. \\
+GD still struggled at low dose ($I_0=10^2$), but some structural information can still be recovered from the 360 angle plot. \\
+
+\noindent \textbf{When do they do better or worse?}
 
 \noindent FBP performs better when the dose is high and there is sufficient angular converage. 
-It is also a single pass analytic recosntruction, meaning it is much faster and produces an image almost instantaneously. 
-The default filter used in FBP is Ram-Lak, which preserves high frequency detail, resulting in images with sharp edges, critical for clinical cases. \\
-
-\noindent However, this algorithm degrades rapidly at lower doses due to the equal amplification of high frequencies, regardless of whether they represent noise or signal. 
-At lower doses, noise quickly dominates the reconstruction as the filter amplifies it just as aggresively as the true signal.\\
+It is also much faster and produces an image almost instantaneously. 
+The default filter used in FBP is Ram-Lak, which preserves high frequency detail, resulting in images with sharp edges, critical for clinical cases.
+However, this algorithm degrades rapidly at lower doses due to the equal amplification of high frequencies, regardless of whether they represent noise or signal.\\
 
 \noindent GD performs better when dose is reduced. It does not amplify noise in the same way as FBP, but fits sinogram data progressively resulting in better oerformance at that level. 
-It also does better when angular coverage is sparse, handling undersampled data much better than FBP which produces streaks from incomplete coverage. \\
+It also does better when angular coverage is sparse, handling undersampled data much better than FBP.
+The reconstructions from GD are softer than FBP as the images are built up from zero initialisations with no sharpening filter. 
+FBP therefore outperforms here, as edge sharpness is extremely important in clinical CT. \\
 
-\noindent The reconstructions from GD are softer than FBP as the images are built up from zero initialisations with no sharpening filter. 
-Edge sharpness is extremely important in clinical CT, so FBP outperforms here. \\
-
-\noindent A key point to note is the trade off between the two algorithms concerning computational cost. 
-FBP produces images instantly, whereas GD takes time to perform iterations, increasing the more we do. 
-This poses a significant difference in clinical settings, but also creates an important dilemma for GD, as shown in the plots, because choosing a small number of iterations for a short compute time produces bad quality reconstructions, and the opposite applies for larger numbers of iterations. \\
-
+\noindent A key point to consider is while FBP produces images instantly, GD takes time to perform iterations, increasing the more we do. 
+This poses a significant difference in clinical settings, but also creates an important dilemma for GD, as we need to be able to balance the number of iterations with the time taken to reconstruct them.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.9\textwidth]{figures/fig_1.1c_metrics.pdf}
@@ -132,19 +129,37 @@ This poses a significant difference in clinical settings, but also creates an im
     \caption{Absolute error maps for FBP and GD reconstructions.}
 \end{figure}
 
-\noindent Reducing the source intensity ($I_0$) directly reduces the radiation dose delivered to the patient, which is important as X-rays are a form of ionising radiation, and can damage DNA is there is enough exposure. CT is one of the highest dose forms of medical imaging, so being able to limit the dose of radiation received has a meaningful impact on patient safety, especially for patients with chronic or long term conditions receiving many scans. The trade off here is that as the dose is lowered, it becomes very difficult to reconstruct, which can be seen from our plots where at $I_0 = 10^2$ neither algorithm can produce acceptable images. \\
+\noindent \textbf{Clinical implication}
 
-\noindent Reducing the number of projections shortens the total scan time, which not only reduces patient discomfort or anxiety, but also reduces motion artefacts, as patients will not move or breathe as much during a shorter scan. This is valuable for CTs of constantly moving organs such as the heart, but also for paediatric cases, where children find it much harder to remain still or to perform actions such as holding their breath. Despite these advantages, sparse view CT introduces streak artefacts, which can clearly be seen in the plot for our 20 angle reconstructions. If these artefacts were to appear over the patient's organs, they could be misinterpreted as lesions or hide real ones.\\
+\noindent Reducing the source intensity ($I_0$) directly reduces the radiation dose delivered to the patient, which is important as X-rays are a form of ionising radiation, and can damage DNA with enough exposure. 
+Limiting dose has a meaningful impact on patient safety, especially those with chronic or long term conditions receiving many scans. 
+The trade off here is that as the dose is lowered, it becomes very difficult to reconstruct. \\
 
-\noindent FBP produces instant results, along with sharp and high quality images at standard doses with enough angles. In clinical practice this means that reconstructions are available straight away, and show all boundaries and edges clearly. This is vital in emergency situations where clinicians are unable to wait for scans and need them to be ready straight away. The disadvantage of FBP is that results are extremely sensitive to dose reduction, so are unstable for low dose CT. \\
+\noindent Reducing the number of projections shortens the total scan time, which not only reduces patient discomfort or anxiety, but also motion artefacts, as patients will not move or breathe as much during a shorter scan. 
+This is valuable for constantly moving organs such as the heart or lungs, but also for paediatric cases, where children find it harder to remain stil. 
+Despite these advantages, sparse view CT introduces streak artefacts, which could be misinterpreted as lesions.\\
 
-\noindent Gradient Descent can withstand noise and sparse data better than FBP, but comes at a significant computational cost, as enough iterations need to be performed in order to acheive adequate reconstructions, but the more reconstructions we do the more time it takes, with 200 iterations taking approximately 8 minutes on my machine. In clinical practice this is addressed through the use of GPU accelerated implementations, but these still do not acheive that instant reconstructions that FBP does. Another issue with GD is the softer appearance of edges, which arises from building the image gradually through iterations, without the use of a sharpening filter. This is a disadvantage in clincial imaging, as sharp edges are crucial for detecting anatomy and its margins, as well as performing measurements. \\
+\noindent FBP produces instant results, along with sharp and high quality images at standard doses with enough angles. 
+In clinical practice this means that reconstructions are available straight away, and show all boundaries and edges clearly. 
+This is vital in emergency situations where clinicians need scans to be ready straight away. 
+The disadvantage of FBP is that results are extremely sensitive to dose reduction, so are unstable for low dose CT. \\
 
-\noindent The comparison of scanning procedures and reconstruction algorithms has a direct impact of their applications in CT scanning protocols for clinical practice. Reducing $I_0$ from $10^5$ to $10^3$ represents a $100\times$ reduction in radiation dose, which has an enourmous impact for patients who undergo regular scans as part of their treatment. Being subjected to a lower dose each time significantly reduces the radiation the patients are exposed to, and therefore the risk of cancer or other exposure related complications. However, as demonstrated by the FBP results, reducing dose significantly impacts image reconstruction, meaning that while low dose CT is exceptionally meaningful, it is only a viable option when paired with iterative or deep learning reconstructions. \\
+\noindent Gradient Descent can withstand noise and sparse data better than FBP, but comes at a significant computational cost. 
+In clinical practice this is addressed through the use of GPU accelerated implementations, but these still do not acheive that instant reconstructions that FBP does. 
+Another issue with GD is the softer appearance of edges. This is a disadvantage in clincial imaging, as sharp edges are crucial for detecting anatomy and its margins, as well as performing measurements. \\
 
-\noindent Reducing angle projections from 360 to 20 cuts the scan time by approximately $18\times$. This kind of reduction is very important for instances like cardiac or paediatric CT scans, where scans must be completed as quickly as possible before they are destroyed by motion. This is also meaningful for emergency imaging, where faster imaging results in faster diagnosis and treatment. This is however balanced with an increase in streak artefacts and the loss of fine details, which may be acceptable in certain scanerios, but not in cases where the radiologist is relying on these details to make a diagnostic decision. \\
+\noindent \textbf{Impact}
 
-\noindent The choice of algorithm also has a clear impact on the outcome. FBP's near instant results are critical in time sensitive settings like emergency medicine, but suffer when dose is reduced, whereas GD produces better quality images at reduced doses, but requires significantly more computation and time, which is ideal when low dose is necessary, but the results aren't needed urgently.\\
+\noindent Reducing $I_0$ from $10^5$ to $10^3$ represents a $100\times$ reduction in radiation dose, which has an enourmous impact for patients undergoing regular scans as part of their treatment. 
+Being subjected to a lower dose each time significantly reduces the radiation the patients are exposed to, and therefore the risk of cancer or other exposure related complications. 
+However, as demonstrated by the FBP results, reducing dose significantly impacts image reconstruction, meaning that while low dose CT is exceptionally meaningful, it is only a viable option when paired with iterative or deep learning reconstructions. \\
+
+\noindent Reducing angle projections from 360 to 20 cuts the scan time by approximately $18\times$. 
+This kind of reduction is very important where scans must be completed as quickly as possible before they are destroyed by motion. 
+This is also meaningful for emergency imaging, where faster imaging results in faster diagnosis and treatment.  \\
+
+\noindent The choice of algorithm also has a clear impact on the outcome. 
+FBP's near instant results are critical in time sensitive settings like emergency medicine, but suffer when dose is reduced, whereas GD produces better quality images at reduced doses, but requires significantly more computation and time, which is ideal when low dose is necessary, but the results aren't needed urgently.\\
 
 \subsubsection*{(d) Methods for improvement}
 
