@@ -322,12 +322,12 @@ INPUT ./figures/fig_1.2a.pdf
 INPUT ./figures/fig_1.2a.pdf
 INPUT ./figures/fig_1.2a.pdf
 INPUT ./figures/fig_1.2a.pdf
-INPUT ./figures/fig_1.2b_fbp.pdf
-INPUT ./figures/fig_1.2b_fbp.pdf
-INPUT ./figures/fig_1.2b_fbp.pdf
-INPUT ./figures/fig_1.2b_fbp.pdf
-INPUT ./figures/fig_1.2b_fbp.pdf
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
+INPUT ./figures/fig_1.2b_fbp.pdf
+INPUT ./figures/fig_1.2b_fbp.pdf
+INPUT ./figures/fig_1.2b_fbp.pdf
+INPUT ./figures/fig_1.2b_fbp.pdf
+INPUT ./figures/fig_1.2b_fbp.pdf
 INPUT ./figures/fig_1.2b_gd.pdf
 INPUT ./figures/fig_1.2b_gd.pdf
 INPUT ./figures/fig_1.2b_gd.pdf

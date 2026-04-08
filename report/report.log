@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.11.5)  9 APR 2026 00:33
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.11.5)  9 APR 2026 00:55
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -575,268 +575,242 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 File: figures/fig_1.1a.pdf Graphic file (type pdf)
 <use figures/fig_1.1a.pdf>
 Package pdftex.def Info: figures/fig_1.1a.pdf  used on input line 63.
-(pdftex.def)             Requested size: 318.66948pt x 266.98132pt.
+(pdftex.def)             Requested size: 227.62206pt x 190.69724pt.
 <figures/fig_1.1b.pdf, id=28, 1076.50179pt x 887.37895pt>
 File: figures/fig_1.1b.pdf Graphic file (type pdf)
 <use figures/fig_1.1b.pdf>
-Package pdftex.def Info: figures/fig_1.1b.pdf  used on input line 76.
+Package pdftex.def Info: figures/fig_1.1b.pdf  used on input line 73.
 (pdftex.def)             Requested size: 318.66948pt x 262.68172pt.
+<figures/fig_1.1c_fbp.pdf, id=29, 943.22125pt x 888.1983pt>
+File: figures/fig_1.1c_fbp.pdf Graphic file (type pdf)
+<use figures/fig_1.1c_fbp.pdf>
+Package pdftex.def Info: figures/fig_1.1c_fbp.pdf  used on input line 81.
+(pdftex.def)             Requested size: 318.66948pt x 300.07248pt.
 
 
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.79 
-      [1 <./figures/fig_1.1a.pdf>]
-<figures/fig_1.1c_fbp.pdf, id=90, 943.22125pt x 888.1983pt>
-File: figures/fig_1.1c_fbp.pdf Graphic file (type pdf)
-<use figures/fig_1.1c_fbp.pdf>
-Package pdftex.def Info: figures/fig_1.1c_fbp.pdf  used on input line 84.
-(pdftex.def)             Requested size: 318.66948pt x 300.07248pt.
-<figures/fig_1.1c_gd_200iter.pdf, id=91, 943.22125pt x 888.1983pt>
+l.84 
+      [1 <./figures/fig_1.1a.pdf> <./figures/fig_1.1b.pdf>]
+<figures/fig_1.1c_gd_200iter.pdf, id=155, 943.22125pt x 888.1983pt>
 File: figures/fig_1.1c_gd_200iter.pdf Graphic file (type pdf)
 <use figures/fig_1.1c_gd_200iter.pdf>
-Package pdftex.def Info: figures/fig_1.1c_gd_200iter.pdf  used on input line 90.
+Package pdftex.def Info: figures/fig_1.1c_gd_200iter.pdf  used on input line 87.
 (pdftex.def)             Requested size: 318.66948pt x 300.07248pt.
 
 
-[2 <./figures/fig_1.1b.pdf> <./figures/fig_1.1c_fbp.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 96--100
+[2 <./figures/fig_1.1c_fbp.pdf> <./figures/fig_1.1c_gd_200iter.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 93--97
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 101--105
+Underfull \hbox (badness 10000) in paragraph at lines 98--102
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 108--112
+Underfull \hbox (badness 10000) in paragraph at lines 105--109
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 113--117
+Underfull \hbox (badness 10000) in paragraph at lines 110--114
 
  []
 
-
-
-[3 <./figures/fig_1.1c_gd_200iter.pdf>]
-<figures/fig_1.1c_metrics.pdf, id=282, 555.42503pt x 335.33278pt>
+<figures/fig_1.1c_metrics.pdf, id=278, 555.42503pt x 335.33278pt>
 File: figures/fig_1.1c_metrics.pdf Graphic file (type pdf)
 <use figures/fig_1.1c_metrics.pdf>
-Package pdftex.def Info: figures/fig_1.1c_metrics.pdf  used on input line 122.
-(pdftex.def)             Requested size: 409.71692pt x 247.36974pt.
-<figures/fig_1.1c_errors.pdf, id=283, 1425.59076pt x 744.38098pt>
+Package pdftex.def Info: figures/fig_1.1c_metrics.pdf  used on input line 119.
+(pdftex.def)             Requested size: 318.66948pt x 192.39526pt.
+<figures/fig_1.1c_errors.pdf, id=279, 1425.59076pt x 744.38098pt>
 File: figures/fig_1.1c_errors.pdf Graphic file (type pdf)
 <use figures/fig_1.1c_errors.pdf>
-Package pdftex.def Info: figures/fig_1.1c_errors.pdf  used on input line 128.
+Package pdftex.def Info: figures/fig_1.1c_errors.pdf  used on input line 125.
 (pdftex.def)             Requested size: 409.71692pt x 213.93404pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 134--137
+
+[3 <./figures/fig_1.1c_metrics.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 131--134
 
  []
 
 
+Underfull \hbox (badness 10000) in paragraph at lines 135--137
 
-[4 <./figures/fig_1.1c_metrics.pdf> <./figures/fig_1.1c_errors.pdf>]
+ []
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 138--141
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 142--146
+Underfull \hbox (badness 10000) in paragraph at lines 142--145
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 147--150
+Underfull \hbox (badness 10000) in paragraph at lines 148--151
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 153--156
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 157--160
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 161--163
+Underfull \hbox (badness 10000) in paragraph at lines 152--155
 
  []
 
 
 
-[5]
-Underfull \hbox (badness 10000) in paragraph at lines 174--175
+[4 <./figures/fig_1.1c_errors.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 156--158
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 176--177
+Underfull \hbox (badness 10000) in paragraph at lines 170--172
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 178--179
+Underfull \hbox (badness 10000) in paragraph at lines 173--175
 
  []
 
-<figures/fig_1.2a.pdf, id=432, 1076.50179pt x 887.37895pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 176--178
+
+ []
+
+<figures/fig_1.2a.pdf, id=426, 1076.50179pt x 887.37895pt>
 File: figures/fig_1.2a.pdf Graphic file (type pdf)
 <use figures/fig_1.2a.pdf>
-Package pdftex.def Info: figures/fig_1.2a.pdf  used on input line 189.
+Package pdftex.def Info: figures/fig_1.2a.pdf  used on input line 188.
 (pdftex.def)             Requested size: 318.66948pt x 262.68172pt.
-<figures/fig_1.2b_fbp.pdf, id=433, 946.18436pt x 888.1983pt>
+
+
+[5{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
+<figures/fig_1.2b_fbp.pdf, id=437, 946.18436pt x 888.1983pt>
 File: figures/fig_1.2b_fbp.pdf Graphic file (type pdf)
 <use figures/fig_1.2b_fbp.pdf>
-Package pdftex.def Info: figures/fig_1.2b_fbp.pdf  used on input line 197.
+Package pdftex.def Info: figures/fig_1.2b_fbp.pdf  used on input line 196.
 (pdftex.def)             Requested size: 318.66948pt x 299.13734pt.
-
-
-[6{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc} <./figures/fig_1.2a.pdf>]
-<figures/fig_1.2b_gd.pdf, id=513, 946.18436pt x 888.1983pt>
+<figures/fig_1.2b_gd.pdf, id=438, 946.18436pt x 888.1983pt>
 File: figures/fig_1.2b_gd.pdf Graphic file (type pdf)
 <use figures/fig_1.2b_gd.pdf>
-Package pdftex.def Info: figures/fig_1.2b_gd.pdf  used on input line 203.
+Package pdftex.def Info: figures/fig_1.2b_gd.pdf  used on input line 202.
 (pdftex.def)             Requested size: 318.66948pt x 299.13734pt.
-<figures/fig_1.2b_metrics.pdf, id=514, 563.21666pt x 335.33278pt>
+
+
+[6 <./figures/fig_1.2a.pdf> <./figures/fig_1.2b_fbp.pdf>]
+<figures/fig_1.2b_metrics.pdf, id=575, 563.21666pt x 335.33278pt>
 File: figures/fig_1.2b_metrics.pdf Graphic file (type pdf)
 <use figures/fig_1.2b_metrics.pdf>
-Package pdftex.def Info: figures/fig_1.2b_metrics.pdf  used on input line 209.
-(pdftex.def)             Requested size: 409.71692pt x 243.95174pt.
-
-
-[7 <./figures/fig_1.2b_fbp.pdf> <./figures/fig_1.2b_gd.pdf>]
-<figures/fig_1.2b_errors.pdf, id=642, 1427.80693pt x 744.38098pt>
+Package pdftex.def Info: figures/fig_1.2b_metrics.pdf  used on input line 208.
+(pdftex.def)             Requested size: 318.66948pt x 189.73967pt.
+<figures/fig_1.2b_errors.pdf, id=576, 1427.80693pt x 744.38098pt>
 File: figures/fig_1.2b_errors.pdf Graphic file (type pdf)
 <use figures/fig_1.2b_errors.pdf>
-Package pdftex.def Info: figures/fig_1.2b_errors.pdf  used on input line 215.
+Package pdftex.def Info: figures/fig_1.2b_errors.pdf  used on input line 214.
 (pdftex.def)             Requested size: 409.71692pt x 213.60464pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 219--220
+
+[7 <./figures/fig_1.2b_gd.pdf> <./figures/fig_1.2b_metrics.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 218--223
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 221--222
+Underfull \hbox (badness 10000) in paragraph at lines 224--228
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 229--233
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 236--240
 
  []
 
 
 
-[8 <./figures/fig_1.2b_metrics.pdf> <./figures/fig_1.2b_errors.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 223--224
+[8 <./figures/fig_1.2b_errors.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 241--245
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 227--228
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 229--230
-
- []
-
-<figures/fig_1.3b.pdf, id=784, 1149.09305pt x 356.09235pt>
+<figures/fig_1.3b.pdf, id=785, 1149.09305pt x 356.09235pt>
 File: figures/fig_1.3b.pdf Graphic file (type pdf)
 <use figures/fig_1.3b.pdf>
-Package pdftex.def Info: figures/fig_1.3b.pdf  used on input line 244.
+Package pdftex.def Info: figures/fig_1.3b.pdf  used on input line 257.
 (pdftex.def)             Requested size: 432.48051pt x 134.02332pt.
-
-
-[9]
-<figures/fig_1.3c_comparison.pdf, id=793, 860.01299pt x 355.64069pt>
+<figures/fig_1.3c_comparison.pdf, id=786, 860.01299pt x 355.64069pt>
 File: figures/fig_1.3c_comparison.pdf Graphic file (type pdf)
 <use figures/fig_1.3c_comparison.pdf>
-Package pdftex.def Info: figures/fig_1.3c_comparison.pdf  used on input line 256.
+Package pdftex.def Info: figures/fig_1.3c_comparison.pdf  used on input line 269.
 (pdftex.def)             Requested size: 432.48051pt x 178.84554pt.
-<figures/fig_1.3c_convergence.pdf, id=794, 641.08583pt x 424.61511pt>
+
+
+[9 <./figures/fig_1.3b.pdf>]
+<figures/fig_1.3c_convergence.pdf, id=863, 641.08583pt x 424.61511pt>
 File: figures/fig_1.3c_convergence.pdf Graphic file (type pdf)
 <use figures/fig_1.3c_convergence.pdf>
-Package pdftex.def Info: figures/fig_1.3c_convergence.pdf  used on input line 262.
+Package pdftex.def Info: figures/fig_1.3c_convergence.pdf  used on input line 275.
 (pdftex.def)             Requested size: 318.66948pt x 211.06952pt.
 
-
-[10 <./figures/fig_1.3b.pdf> <./figures/fig_1.3c_comparison.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 270--271
+Underfull \hbox (badness 10000) in paragraph at lines 283--284
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 272--273
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 274--275
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 276--277
+Underfull \hbox (badness 10000) in paragraph at lines 285--287
 
  []
 
 
 
-[11 <./figures/fig_1.3c_convergence.pdf>]
-<figures/fig_2.1b.pdf, id=992, 1076.18614pt x 665.50261pt>
+[10 <./figures/fig_1.3c_comparison.pdf> <./figures/fig_1.3c_convergence.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 288--292
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 293--295
+
+ []
+
+<figures/fig_2.1b.pdf, id=988, 1076.18614pt x 665.50261pt>
 File: figures/fig_2.1b.pdf Graphic file (type pdf)
 <use figures/fig_2.1b.pdf>
-Package pdftex.def Info: figures/fig_2.1b.pdf  used on input line 294.
+Package pdftex.def Info: figures/fig_2.1b.pdf  used on input line 313.
 (pdftex.def)             Requested size: 432.48051pt x 267.44536pt.
-<figures/fig_2.1c.pdf, id=993, 817.4879pt x 371.3712pt>
+<figures/fig_2.1c.pdf, id=989, 817.4879pt x 371.3712pt>
 File: figures/fig_2.1c.pdf Graphic file (type pdf)
 <use figures/fig_2.1c.pdf>
-Package pdftex.def Info: figures/fig_2.1c.pdf  used on input line 304.
+Package pdftex.def Info: figures/fig_2.1c.pdf  used on input line 323.
 (pdftex.def)             Requested size: 386.96027pt x 175.79114pt.
 
 
-[12 <./figures/fig_2.1b.pdf>]
-<figures/fig_2.1d.pdf, id=1071, 1076.35414pt x 664.5053pt>
+[11 <./figures/fig_2.1b.pdf>]
+<figures/fig_2.1d.pdf, id=1064, 1076.35414pt x 664.5053pt>
 File: figures/fig_2.1d.pdf Graphic file (type pdf)
 <use figures/fig_2.1d.pdf>
-Package pdftex.def Info: figures/fig_2.1d.pdf  used on input line 314.
+Package pdftex.def Info: figures/fig_2.1d.pdf  used on input line 333.
 (pdftex.def)             Requested size: 432.48051pt x 266.99387pt.
-<figures/fig_2.1e.pdf, id=1072, 486.8827pt x 426.66255pt>
+<figures/fig_2.1e.pdf, id=1065, 486.8827pt x 426.66255pt>
 File: figures/fig_2.1e.pdf Graphic file (type pdf)
 <use figures/fig_2.1e.pdf>
-Package pdftex.def Info: figures/fig_2.1e.pdf  used on input line 326.
+Package pdftex.def Info: figures/fig_2.1e.pdf  used on input line 345.
 (pdftex.def)             Requested size: 273.14923pt x 239.36559pt.
 
 
-[13 <./figures/fig_2.1c.pdf> <./figures/fig_2.1d.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 334--335
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 336--337
-
- []
-
-<figures/fig_2.2a.pdf, id=1193, 1290.82568pt x 887.9513pt>
-File: figures/fig_2.2a.pdf Graphic file (type pdf)
-<use figures/fig_2.2a.pdf>
-Package pdftex.def Info: figures/fig_2.2a.pdf  used on input line 347.
-(pdftex.def)             Requested size: 432.48051pt x 297.496pt.
-
-
-[14 <./figures/fig_2.1e.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 351--352
-
- []
-
-
+[12 <./figures/fig_2.1c.pdf> <./figures/fig_2.1d.pdf>]
 Underfull \hbox (badness 10000) in paragraph at lines 353--354
 
  []
@@ -846,111 +820,133 @@ Underfull \hbox (badness 10000) in paragraph at lines 355--356
 
  []
 
+<figures/fig_2.2a.pdf, id=1188, 1290.82568pt x 887.9513pt>
+File: figures/fig_2.2a.pdf Graphic file (type pdf)
+<use figures/fig_2.2a.pdf>
+Package pdftex.def Info: figures/fig_2.2a.pdf  used on input line 366.
+(pdftex.def)             Requested size: 432.48051pt x 297.496pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 357--358
+
+[13 <./figures/fig_2.1e.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 370--371
 
  []
 
-<figures/fig_2.2b.pdf, id=1243, 817.4879pt x 371.3712pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 372--373
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 374--375
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 376--377
+
+ []
+
+<figures/fig_2.2b.pdf, id=1239, 817.4879pt x 371.3712pt>
 File: figures/fig_2.2b.pdf Graphic file (type pdf)
 <use figures/fig_2.2b.pdf>
-Package pdftex.def Info: figures/fig_2.2b.pdf  used on input line 367.
+Package pdftex.def Info: figures/fig_2.2b.pdf  used on input line 386.
 (pdftex.def)             Requested size: 386.96027pt x 175.79114pt.
 
 
-[15 <./figures/fig_2.2a.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 371--372
+[14 <./figures/fig_2.2a.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 390--391
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 373--374
+Underfull \hbox (badness 10000) in paragraph at lines 392--393
 
  []
 
-<figures/fig_2.2c.pdf, id=1338, 815.74323pt x 371.3712pt>
+<figures/fig_2.2c.pdf, id=1334, 815.74323pt x 371.3712pt>
 File: figures/fig_2.2c.pdf Graphic file (type pdf)
 <use figures/fig_2.2c.pdf>
-Package pdftex.def Info: figures/fig_2.2c.pdf  used on input line 383.
+Package pdftex.def Info: figures/fig_2.2c.pdf  used on input line 402.
 (pdftex.def)             Requested size: 386.96027pt x 176.16515pt.
 
 
-[16 <./figures/fig_2.2b.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 391--392
+[15 <./figures/fig_2.2b.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 410--411
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 393--394
+Underfull \hbox (badness 10000) in paragraph at lines 412--413
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 395--396
+Underfull \hbox (badness 10000) in paragraph at lines 414--415
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 397--398
+Underfull \hbox (badness 10000) in paragraph at lines 416--417
 
  []
 
 
 
-[17 <./figures/fig_2.2c.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 418--419
+[16 <./figures/fig_2.2c.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 437--438
+
+ []
+
+
+
+[17]
+Underfull \hbox (badness 10000) in paragraph at lines 443--444
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 445--446
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 447--448
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 449--450
 
  []
 
 
 
 [18]
-Underfull \hbox (badness 10000) in paragraph at lines 424--425
+Underfull \hbox (badness 10000) in paragraph at lines 451--452
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 426--427
+Underfull \hbox (badness 10000) in paragraph at lines 453--454
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 428--429
+Underfull \hbox (badness 10000) in paragraph at lines 457--458
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 430--431
+Underfull \hbox (badness 10000) in paragraph at lines 459--460
 
  []
 
 
 
 [19]
-Underfull \hbox (badness 10000) in paragraph at lines 432--433
 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 434--435
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 438--439
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 440--441
-
- []
-
-
-
-[20]
-
-[21] (./report.aux)
+[20] (./report.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -959,18 +955,18 @@ Package rerunfilecheck Info: File `report.out' has not changed.
 (rerunfilecheck)             Checksum: F3D03086F7F9926FA2FA9AE0D24B96F1;292.
  ) 
 Here is how much of TeX's memory you used:
- 22248 strings out of 473190
- 414094 string characters out of 5715800
- 785993 words of memory out of 5000000
+ 22247 strings out of 473190
+ 414087 string characters out of 5715800
+ 786994 words of memory out of 5000000
  45084 multiletter control sequences out of 15000+600000
  568163 words of font info for 72 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,7n,91p,1581b,590s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on report.pdf (22 pages, 15058446 bytes).
+Output written on report.pdf (21 pages, 15055524 bytes).
 PDF statistics:
- 1564 PDF objects out of 1728 (max. 8388607)
- 513 compressed objects within 6 object streams
- 81 named destinations out of 1000 (max. 500000)
+ 1560 PDF objects out of 1728 (max. 8388607)
+ 510 compressed objects within 6 object streams
+ 80 named destinations out of 1000 (max. 500000)
  149 words of extra memory for PDF output out of 10000 (max. 10000000)
 

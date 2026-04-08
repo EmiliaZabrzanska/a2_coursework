@@ -60,16 +60,13 @@ The CT image was loaded, converted to greyscale, and normalised to match the att
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{figures/fig_1.1a.pdf}
+    \includegraphics[width=0.5\textwidth]{figures/fig_1.1a.pdf}
     \caption{CT chest phantom with attenuation coefficients in cm$^{-1}$.}
 \end{figure}
 
-\noindent I plot the image to confirm it was loaded, and added a colourbar to show the range of attenuation coefficients. 
-
 \subsubsection*{(b) Simulating noise and sinograms}
 
-Gaussian ($\mu=0$, $\sigma=0.05$) and Poisson noise were simulated at three dose levels ($I_0 \in \{10^5, 10^3, 10^2\}$) for 360, 90 and 20 projections. 
-The sinogram was obtained using the Radon transform and converted to Beer-Lambert transmission form, with Poisson then Gaussian noise added, and it was then converted back to an absorption sinogram.
+Gaussian and Poisson noise were simulated at three dose levels ($I_0 \in \{10^5, 10^3, 10^2\}$) for 360, 90 and 20 projections. 
 
 \begin{figure}[H]
     \centering
@@ -119,7 +116,7 @@ FBP therefore outperforms here, as edge sharpness is extremely important in clin
 This poses a significant difference in clinical settings, but also creates an important dilemma for GD, as we need to be able to balance the number of iterations with the time taken to reconstruct them.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\textwidth]{figures/fig_1.1c_metrics.pdf}
+    \includegraphics[width=0.7\textwidth]{figures/fig_1.1c_metrics.pdf}
     \caption{Image quality metrics (RMSE, PSNR, SSIM) for FBP and GD.}
 \end{figure}
 
@@ -131,16 +128,14 @@ This poses a significant difference in clinical settings, but also creates an im
 
 \noindent \textbf{Clinical implication}
 
-\noindent Reducing the source intensity ($I_0$) directly reduces the radiation dose delivered to the patient, which is important as X-rays are a form of ionising radiation, and can damage DNA with enough exposure. 
+\noindent Reducing the source intensity ($I_0$) reduces the radiation dose, which is important as X-rays are a form of ionising radiation. 
 Limiting dose has a meaningful impact on patient safety, especially those with chronic or long term conditions receiving many scans. 
 The trade off here is that as the dose is lowered, it becomes very difficult to reconstruct. \\
 
-\noindent Reducing the number of projections shortens the total scan time, which not only reduces patient discomfort or anxiety, but also motion artefacts, as patients will not move or breathe as much during a shorter scan. 
-This is valuable for constantly moving organs such as the heart or lungs, but also for paediatric cases, where children find it harder to remain stil. 
-Despite these advantages, sparse view CT introduces streak artefacts, which could be misinterpreted as lesions.\\
+\noindent Reducing the number of projections shortens the total scan time, and can reduce patient discomfort or anxiety, but also motion artefacts, as patients will not move or breathe as much during a shorter scan. 
+This is valuable for constantly moving organs such as the heart or lungs, but also for cases, where patients find it harder to remain still. \\
 
-\noindent FBP produces instant results, along with sharp and high quality images at standard doses with enough angles. 
-In clinical practice this means that reconstructions are available straight away, and show all boundaries and edges clearly. 
+\noindent FBP produces instant results, along with sharp and high quality images at standard doses with enough angles.
 This is vital in emergency situations where clinicians need scans to be ready straight away. 
 The disadvantage of FBP is that results are extremely sensitive to dose reduction, so are unstable for low dose CT. \\
 
@@ -163,7 +158,8 @@ FBP's near instant results are critical in time sensitive settings like emergenc
 
 \subsubsection*{(d) Methods for improvement}
 
-\noindent Adding a regulariser to the Gradient Descent minimisation problem helps encode prior knowledge about what the final image should look like. One example is Total Variation, which turns the problem into the following:
+\noindent Adding a regulariser to the Gradient Descent minimisation problem helps encode prior knowledge about what the final image should look like. 
+One example is Total Variation, which turns the problem into the following:
 
 $$\hat{\mu} = \arg\min_\mu \|A\mu - p\|^2 + \alpha R(\mu)$$
 
@@ -171,11 +167,14 @@ $$\hat{\mu} = \arg\min_\mu \|A\mu - p\|^2 + \alpha R(\mu)$$
 
 $$TV(\mu) = \|\nabla\mu\|_1 = \sum_{i,j} \sqrt{|\mu_{i,j+1} - \mu_{i,j}| + |\mu_{i+1,j} - \mu_{i,j}|}$$
 
-\noindent TV penalises the sum of image gradients, which promotes piecewise constant solutions with sharp edges, directly addressing the noise seen in our reconstructions, but still maintaining anatomical boundaries. Aside from TV, we can also use L1 or L2 norms as regularisers in reconstruction problems. \\
+\noindent TV penalises the sum of image gradients, promoting piecewise constant solutions with sharp edges, but still maintaining anatomical boundaries. 
+Aside from TV, we can also use L1 or L2 norms as regularisers in reconstruction problems. \\
 
-\noindent We can also implement Deep Learning denoising, which involves training a model such as a UNet, GAN, Diffusiion model etc. to learn an improved image from a worse one. This allows reconstructions to still use FBP and acheive instant results when needed, but then be passed through a model to reduce noise and improve quality. While this is very computationally efficient and versatile, the method relies heavily on its trainig data, and can be subject to hallucinations, where the model may remove or add artefacts from the image and affect the patient's diagnosis. \\
+\noindent We can also implement Deep Learning denoising, which involves training a model such as a UNet, GAN or Diffusiion model to learn an improved image from a worse one. 
+While this is very computationally efficient and versatile, the method relies heavily on its trainig data, and deep learning models can hallucinate, removing or adding artefacts to the image. \\
 
-\noindent Non-Local means is another denoising method, which can be applied as a regulariser but also in post-processing. NLM will search the entire image to find patches with a similar structure and average them together, before replacing this average into the original patches. It is very useful for reducing noise while preserving texture and and structural details, so is better than local filtering methods. The trade off is the computational cost, as it is significantly more demanding than simpler methods.\\
+\noindent Non-Local means can be applied as a regulariser, and will search the entire image to find similar patches and average them together, before replacing this into the original patches. 
+It is very useful for reducing noise while preserving texture and and structural details, so is better than local filtering methods.\\
 
 % ──────────────────────────────────────────────
 \subsection*{Exercise 1.2: Limited Angle Tomography}
@@ -206,7 +205,7 @@ Noisy sinograms were simulated at three angular ranges (180\textdegree, 120\text
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\textwidth]{figures/fig_1.2b_metrics.pdf}
+    \includegraphics[width=0.7\textwidth]{figures/fig_1.2b_metrics.pdf}
     \caption{Limited angle image quality metrics.}
 \end{figure}
 
@@ -216,17 +215,33 @@ Noisy sinograms were simulated at three angular ranges (180\textdegree, 120\text
     \caption{Limited angle absolute error maps.}
 \end{figure}
 
-The Limited Angle case shows several key differences. In the FBP reconstructions, we see near perfect reconstructions at a range of 180, identical to Exercise 1.1. At a range of 120 degrees, FBP still recovers recognisable anatomy across all projections, however with some distortion of edges. This is a much better performance than for $I_0=10^3$ in Exercie 1.1, which was also the medium statistic. At the 40 degree range the reconstructions become unreadable due to streak artefacts running across the image in the direction corresponding to the measured anfular range. All three columns at this range are equally uninterpretable, similarly to the previous exercise, where all FBP reconstructions at low dose were entirely dominated by noise. Despite this, the consistency across reconstructions shows that when we have a limited range, the number of projections will not improve the image as we cannot recover information that simply is not present in the data. \\
+The Limited Angle case shows several key differences. 
+In the FBP reconstructions, we see near perfect reconstructions at a range of 180, identical to Exercise 1.1. 
+At a range of 120 degrees, FBP still recovers recognisable anatomy with some edge distortion. 
+This is a much better performance than for $I_0=10^3$ in Exercie 1.1. 
+At the 40 degree range all reconstructions become unrecognisable due to streak artefacts.  \\
 
-\noindent In the Gradient Descent reconstructions, we see that it is better suited to a dealing with a reduction in the angular range, producing readable reconstructions for all projections in the 120 degree range. The success of GD is confirmed by the metrics we recover, where PSNR is 24-25 dB and SSIM of 0.45-0.57, confirming that the anatomy is well recovered. Comparing this to the middle case in our low dose reconstructions, the PSNR and SSIM ranged between 10-13 dB and 0.19-0.20 respectively, which shows a clear improvement in the ability of Gradient Descent to reconstruct limited angle sinograms compared to low dose ones. At the 40 degree range, GD produces blurred images with visible streaks. While these streaks are smoother than FBP's, all three images produced at this range are equally unrecognisable. \\ 
+\noindent In the Gradient Descent reconstructions, we see that it is better suited to a dealing with a reduction in the angular range, producing readable reconstructions for all projections in the 120 degree range. 
+The success of GD is confirmed by the metrics we recover, where PSNR is 24-25 dB and SSIM of 0.45-0.57, confirming that the anatomy is well recovered. 
+Comparing this to the middle case in our low dose reconstructions, the PSNR and SSIM ranged between 10-13 dB and 0.19-0.20 respectively, which shows a clear improvement in the ability of Gradient Descent to reconstruct limited angle sinograms compared to low dose ones. 
+At the 40 degree range, GD produces blurred images with visible streaks, and while these are smoother than FBP's, all of the images are still unrecognisable. \\ 
 
-\noindent The main difference to Exercise 1.1 is the nature of the degradation of the images. In 1.1 we were reducing dose, producing spatially uniform, random noise throughout the image, so it degraded everywhere equally. In 1.2, the degradation is structured and directional, where even in the 40 degree range, we can clearly see some edges, while others are completely covered with streaks in one direction. This arises from a lack of information, as edges whose normal falls outside of the measured range are invisible, and cannot be recovered regardless of the algorithm used, as they simply do not exist in the data. \\
+\noindent The main difference to Exercise 1.1 is the nature of the degradation of the images. 
+In 1.1 we were reducing dose, producing spatially uniform, random noise throughout the image, so it degraded everywhere equally. 
+In 1.2, the degradation is directional, where even in the 40 degree range, we can clearly see some edges, while others are completely covered with streaks in one direction. 
+This arises from a lack of information, as edges whose normal falls outside of the measured range are invisible, and cannot be recovered regardless of the algorithm used, as they simply do not exist in the data. \\
 
 \subsubsection*{(c) Mathematical principles}
 
-The mathematical principal describing this is the Fourier Slice Theorem, which stated that a 1D fourier transform of the detector function (a projection) at an angle $\theta$ is the same as a line or radial slice through the origin of the 2D fourier transform of the image at the same angle. The more projections that we take, the more radial slices we obtain, and at a range of 180 degrees, (due to symmetry of a circle) we have anough radial slices to cover the entire domain and consttruct the full fourier representation of the image. At a limited range however, only the radial lines corresponding to the 40 degree wedge are populated with radial lines, and the rest of the fourier space is entirely empty. No reconstructive algorithm can recover information that is not in the data, which results in deficiencies, and regardless of how many projections we take in this range, there will be almost no improvement due to the data needed simply not being there. \\
+The mathematical principal describing this is the Fourier Slice Theorem, which stated that a 1D fourier transform of the detector function (a projection) at an angle $\theta$ is the same as a line or radial slice through the origin of the 2D fourier transform of the image at the same angle. 
+The more projections that we take, the more radial slices we obtain.
+At a limited range however, only the radial lines corresponding to the 40 degree wedge are populated with radial lines. 
+No reconstructive algorithm can recover information that is not in the data, which results in deficiencies, and regardless of how many projections we take in this range, there will be almost no improvement due to the data needed simply not being there. \\
 
-\noindent As discussed in Lecture 11 (02/03/2026), edges appear when there is a sharp change in the brightness or intensity in the image. We characterise them using the image gradient, where the gradient vector points in the direction of maximum intensity change, and its magnitude is largest at an edge. Therefore, the direction of an edge is perpendicular to the direction of the gradient vector. Connected with the Fourier Slice Theorem, an edge will only be visible in CT ifthe projection angle perpendicular to it lies withinthe measured range. This is precisely why edges disappear at limited angle ranges, as for a 40 degree range, only edges that are perpendicular tothe projections taken there will show up inthe reconstruction, and all others will be invisible regardless of how many projections we take or which reconstruction algorithm is used. \\
+\noindent As discussed in Lecture 11 (02/03/2026), edges appear when there is a sharp change in the brightness or intensity in the image. 
+We characterise them using the image gradient, where the gradient vector points in the direction of maximum intensity change, and its magnitude is largest at an edge. 
+Therefore, the direction of an edge is perpendicular to the direction of the gradient vector. 
+Connected with the Fourier Slice Theorem, an edge will only be visible in CT if the projection angle perpendicular to it lies within the measured range. \\
 
 % ──────────────────────────────────────────────
 \subsection*{Exercise 1.3: Reconstruction}
@@ -237,15 +252,13 @@ The available filters in \texttt{scikit-image} are: ramp (Ram-Lak), Shepp-Logan,
 
 \subsubsection*{(b) Filter comparison}
 
-The Shepp-Logan and cosine filters were compared against Ram-Lak on the $I_0=10^3$, 360-angle sinogram.
-
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.95\textwidth]{figures/fig_1.3b.pdf}
     \caption{FBP filter comparison at $I_0=10^3$, 360 angles.}
 \end{figure}
 
-\noindent Moving from Ram-Lak to Shepp-Logan to cosine, RMSE decreased from 0.00063 to 0.00034 and PSNR increased from 3.98~dB to 9.43~dB, demonstrating increasing high-frequency attenuation. The cosine reconstruction is visibly less grainy, though SSIM values remain similar (0.18--0.19), indicating that while signal quality improves, structural similarity to ground truth is limited at this dose. Ultimately, no filter can fully compensate for insufficient photon counts in low-dose CT.
+\noindent Moving from Ram-Lak to Shepp-Logan to cosine, RMSE decreased from 0.00063 to 0.00034 and PSNR increased from 3.98~dB to 9.43~dB, demonstrating increasing high-frequency attenuation. The cosine reconstruction is visibly less grainy, though SSIM values remain similar (0.18--0.19), indicating that while signal quality improves, structural similarity to ground truth is limited at this dose.
 
 \subsubsection*{(c) OS-SART vs SIRT comparison}
 
@@ -269,13 +282,19 @@ OS-SART splits projections into $N$ subsets, performing $N$ updates per outer it
 
 \noindent Both CT and PET reconstructions can be framed as minimisation problems, however the type of noise encountered in each type of imaging is different, meaning that the algoriths used for reconstructions will also differ. \\
 
-\noindent The forward model in CT is $p = -\log(\frac{I}{I_0}) = \sum_i \mu_i l_i$, where the dominant noise is a mix of predominantly electronic Gaussian noise and Poisson photon counting noise (which also approximates to a Gaussian at high photon counts). The maximum likelihood estimate for Gaussian noise is obtained using least squares, which is the minimisation used in Gradient Descent (SIRT) algorithms.\\
+\noindent The forward model in CT is $p = -\log(\frac{I}{I_0}) = \sum_i \mu_i l_i$, where the dominant noise is a mix of predominantly electronic Gaussian noise and Poisson photon counting noise. 
+The maximum likelihood estimate for Gaussian noise is obtained using least squares, which is the minimisation used in Gradient Descent (SIRT) algorithms.\\
 
-\noindent PET detects individual photon pairs from positron annihilation events. This is a discrete counting process where the acquisition model is $I_j^{em} = \sum_i I_i l_{ij}$, and $I_j^{em}$ is the number of detected photon pairs along the line of response $j$. Because PET is counting individual events, its noise follows a Poisson distribution, and the data is very noise, with additional complexity from randomness, scatter events, detector calibration and pile up factors. Due to the nature of the noise, we cannot use a least squares minimisation, but maximise using the Poisson log likelihood. The MLEM (Maximum Likelihood Expectation Maximisation) and OSEM (Ordered Subsets Expectation Maximisation) algorithms do exactly that.\\
+\noindent PET detects individual photon pairs from positron annihilation events. 
+This is a discrete counting process where the acquisition model is $I_j^{em} = \sum_i I_i l_{ij}$, and $I_j^{em}$ is the number of detected photon pairs along the line of response $j$. 
+Because PET is counting individual events, its noise follows a Poisson distribution.
+Due to the nature of the noise, we cannot use a least squares minimisation, but maximise using the Poisson log likelihood.\\
 
-\noindent MLEM uses a multiplicative update rather than the additive step used in SIRT, which naturally controls non-negativity and correctly accounts for the Poisson statistics of the measurements, whereas OSEM is the ordered subset version of MLEM, the PET equivalent of using OS-SART in CT. It splits data into subsets to accelerate the convergence of the MLEM algorithm, providing a good reconstruction faster than MLEM.\\
+\noindent MLEM uses a multiplicative update rather than the additive step used in SIRT, which naturally controls non-negativity and correctly accounts for the Poisson statistics of the measurements, whereas OSEM is the ordered subset version of MLEM, the PET equivalent of using OS-SART in CT. 
+It splits data into subsets to accelerate the convergence of the MLEM algorithm, providing a good reconstruction faster than MLEM.\\
 
-In summary, we use MLEM and OSEM in PET because the reconstruction algorithm must match the noise model of the data. While CT is mainly Gaussian and therefore suits SIRT like algorithms, PET measurements are dominated by Poisson noise, requiring a statistically correct algorithm that reflects this.
+\noindent In summary, we use MLEM and OSEM in PET because the reconstruction algorithm must match the noise model of the data. 
+While CT is mainly Gaussian and therefore suits SIRT like algorithms, PET measurements are dominated by Poisson noise, requiring a statistically correct algorithm that reflects this.
 
 % ──────────────────────────────────────────────
 \section*{Module 2: MRI Image Denoising}
