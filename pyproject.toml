@@ -9,9 +9,7 @@ description = "Data Science in Medical Imaging (A2) Coursework."
 readme = "README.md"
 requires-python = ">=3.10"
 license = { file = "LICENSE" }
-authors = [
-    { name = "Emilia Zabrzanska", email = "eaz21@cam.ac.uk" },
-]
+authors = [{ name = "Emilia Zabrzanska", email = "eaz21@cam.ac.uk" },]
 
 dependencies = [
     "numpy>=1.24",
@@ -19,6 +17,7 @@ dependencies = [
     "matplotlib>=3.7",
     "scikit-image>=0.21",
     "pywavelets>=1.4",
+    "opencv-python>=4.8",
 ]
 
 [project.optional-dependencies]
@@ -32,12 +31,9 @@ dev = [
 ]
 
 [project.urls]
-"Documentation" = "read the docs link"
-"Source" = "gitlab link"
+"Source" = "https://gitlab.developers.cam.ac.uk/phy/data-intensive-science-mphil/assessments/a2_coursework/eaz21"
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["package*"]
-
-
+include = ["medical_imaging*"]
 

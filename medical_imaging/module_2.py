@@ -10,7 +10,22 @@ import cv2
 
 def load_kspace(path):
 
-    """Load complex k-space data and identify the coil dimension"""
+    """
+    Load complex k-space data from a .npy file and identify the coil dimension.
+ 
+    Parameters
+    ----------
+    path : str
+        File path to the .npy k-space file.
+ 
+    Returns
+    -------
+    kspace : np.ndarray
+        k-space array with shape containing a coil dimension.
+
+    coil_axis : int
+        Index of the axis corresponding to the receiver coils.
+    """
 
     # load using np.load routine as required
     kspace = np.load(path)
@@ -33,7 +48,17 @@ def load_kspace(path):
 
 def plot_kspace_magnitude(kspace, coil_axis, title='K-space magnitude'):
 
-    """Plot the log-scaled magnitude of k-space for each coil. """
+    """
+    Plot the log-scaled magnitude of k-space for each receiver coil.
+ 
+    Parameters
+    ----------
+    kspace : np.ndarray
+
+    coil_axis : int
+
+    title : str, optional
+    """
 
     # determine number of coils and set up subplot grid dimensions
     n_coils = kspace.shape[coil_axis]
@@ -73,7 +98,21 @@ def plot_kspace_magnitude(kspace, coil_axis, title='K-space magnitude'):
 
 def kspace_to_image(kspace, coil_axis):
 
-    """Transform all coils from k-space into image space using the 2D inverse FFT. """
+    """
+    Transform all coils from k-space to image space using the 2D inverse FFT.
+ 
+    Moves the coil axis to the front and applies np.fft.ifft2 independently to each coil's 2D k-space slice.
+ 
+    Parameters
+    ----------
+    kspace : np.ndarray
+
+    coil_axis : int
+ 
+    Returns
+    -------
+    images : np.ndarray
+    """
 
     # move coil axis to front for easy iteration (n_coils, H, W)
     kspace_coils_first = np.moveaxis(kspace, coil_axis, 0)
@@ -86,7 +125,17 @@ def kspace_to_image(kspace, coil_axis):
 
 def plot_magnitude_and_phase(images, coil_idx=0, title='Magnitude and Phase'):
 
-    """Plot the magnitude and phase image from a single coil."""
+    """
+    Plot the magnitude and phase images from a single coil side by side.
+ 
+    Parameters
+    ----------
+    images : np.ndarray
+
+    coil_idx : int, optional
+
+    title : str, optional
+    """
 
     # extract the image for chosen coil
     image = images[coil_idx]
@@ -134,7 +183,15 @@ def plot_magnitude_and_phase(images, coil_idx=0, title='Magnitude and Phase'):
 
 def plot_magnitude(images, title='Magnitude Images'):
 
-    """Plot the magnitude image for each coil in image space"""
+    """
+    Plot the magnitude image for each coil in a 2×3 grid.
+ 
+    Parameters
+    ----------
+    images : np.ndarray
+
+    title : str, optional
+    """
 
     # determine number of coils and set up subplot grid dimensions
     n_coils = images.shape[0]
@@ -172,7 +229,18 @@ def plot_magnitude(images, title='Magnitude Images'):
 
 def root_sum_of_squares(images):
 
-    """Combine images from all coils using root-sum-of-squares. """
+    """
+    Combine multi-coil images into a single image using root-sum-of-squares.
+ 
+    Parameters
+    ----------
+    images : np.ndarray
+ 
+    Returns
+    -------
+    rsos : np.ndarray
+        2D combined magnitude image.
+    """
 
     # compute the magnitude of each coil image
     magnitude = np.abs(images)
@@ -191,7 +259,15 @@ def root_sum_of_squares(images):
 
 def plot_rsos(rsos, title='Root-sum-of-squares coil combination'):
 
-    """Plot the root-sum-of-squares combined image """
+    """
+    Display the root-sum-of-squares combined image with a colourbar.
+ 
+    Parameters
+    ----------
+    rsos : np.ndarray
+
+    title : str, optional
+    """
 
     fig, ax = plt.subplots(figsize=(8, 6))
     ax.set_title(f'{title}', fontsize=16, y=1.02)
@@ -217,7 +293,21 @@ def plot_rsos(rsos, title='Root-sum-of-squares coil combination'):
 
 def gaussian_filtering(images, sigma=1):
 
-    """Denoise all coil images using a Gaussian filter."""
+    """
+    Denoise all coil images by applying a Gaussian smoothing filter.
+ 
+    Parameters
+    ----------
+    images : np.ndarray
+
+    sigma : float, optional
+        Standard deviation of the Gaussian kernel.
+ 
+    Returns
+    -------
+    denoised : np.ndarray
+        Denoised image array with the same shape as the input.
+    """
 
     # create empty array to hold denoised images
     denoised = np.zeros_like(images)
@@ -231,7 +321,27 @@ def gaussian_filtering(images, sigma=1):
 
 def bilateral_filtering(images, d=10, sigma_color=0.2, sigma_space=8):
 
-    """Denoise all coil images using a bilateral filter."""
+    """
+    Denoise all coil images using a bilateral filter.
+ 
+    Parameters
+    ----------
+    images : np.ndarray
+
+    d : int, optional
+        Diameter of the pixel neighbourhood used for filtering.
+
+    sigma_color : float, optional
+        Controls how much intensity difference is tolerated before the filter stops averaging.
+
+    sigma_space : float, optional
+        Controls how much spatial distance is tolerated before the filter stops averaging.
+ 
+    Returns
+    -------
+    denoised : np.ndarray
+        Denoised image array with the same shape as the input.
+    """
 
     # create empty array to hold denoised images
     denoised = np.zeros_like(images)
@@ -247,7 +357,18 @@ def bilateral_filtering(images, d=10, sigma_color=0.2, sigma_space=8):
 
 def wavelet_filtering(images):
 
-    """Denoise all coil images using wavelet thresholding (BayesShrink) """
+    """
+    Denoise all coil images using wavelet thresholding with BayesShrink.
+ 
+    Parameters
+    ----------
+    images : np.ndarray
+ 
+    Returns
+    -------
+    denoised : np.ndarray
+        Denoised image array with the same shape as the input.
+    """
 
     # create empty array to hold denoised images
     denoised = np.zeros_like(images)
@@ -266,7 +387,21 @@ def wavelet_filtering(images):
 
 def plot_denoising_comparison(original, denoised_gaussian, denoised_bilateral, denoised_wavelet, title='Denoising comparison for all coils'):
 
-    """Plot all denoising results in a single figure."""
+    """
+    Plot original and denoised images for all coils in a 4×n_coils grid.
+ 
+    Parameters
+    ----------
+    original : np.ndarray
+
+    denoised_gaussian : np.ndarray
+
+    denoised_bilateral : np.ndarray
+
+    denoised_wavelet : np.ndarray
+
+    title : str, optional
+    """
 
     # determine number of coils and set up subplot grid dimensions
     n_coils = original.shape[0]
@@ -313,7 +448,24 @@ def plot_denoising_comparison(original, denoised_gaussian, denoised_bilateral, d
 
 def butterworth_lowpass_filter(shape, D0=100, n=2):
 
-    """Create a 2D Butterworth low-pass filter centred at the array centre."""
+    """
+    Create a 2D Butterworth low-pass filter centred at the array centre.
+ 
+    Parameters
+    ----------
+    shape : tuple of int
+
+    D0 : float, optional
+        distance from centre in pixels
+
+    n : int, optional
+        Filter order controlling rolloff steepness
+ 
+    Returns
+    -------
+    H : np.ndarray
+        2D Butterworth filter array of the specified shape
+    """
 
     # extract dimensions of the image
     P, Q = shape[0], shape[1]
@@ -336,7 +488,26 @@ def butterworth_lowpass_filter(shape, D0=100, n=2):
 
 def apply_butterworth(kspace, coil_axis, coil_idx=0, D0=100, n=2):  
 
-    """Apply a Butterworth low-pass filter in k-space for a single coil."""
+    """
+    Apply a Butterworth low-pass filter in k-space for a single coil.
+
+    Parameters
+    ----------
+    kspace : np.ndarray
+
+    coil_axis : int
+
+    coil_idx : int, optional
+
+    D0 : float, optional
+        Cutoff frequency for the Butterworth filter
+
+    n : int, optional
+        Filter order
+    Returns
+    -------
+    image_filtered : np.ndarray
+    """
 
     # move coil axis to front and extract the chosen coil: shape (H, W)
     kspace_coils_first = np.moveaxis(kspace, coil_axis, 0)
@@ -361,7 +532,17 @@ def apply_butterworth(kspace, coil_axis, coil_idx=0, D0=100, n=2):
 
 def plot_rsos_denoised(rsos, rsos_denoised, title='Denoised combined coil image'):
 
-    """Plot original and denoised rSoS images side by side for comparison."""
+    """
+    Plot original and denoised rSoS images side by side for comparison.
+ 
+    Parameters
+    ----------
+    rsos : np.ndarray
+
+    rsos_denoised : np.ndarray
+
+    title : str, optional
+    """
 
     fig, axes = plt.subplots(1, 2, figsize=(12, 5))
     fig.suptitle(title, fontsize=16, y=1.02)
