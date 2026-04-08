@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.11.5)  8 APR 2026 23:56
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.11.5)  9 APR 2026 00:09
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -844,28 +844,27 @@ Package pdftex.def Info: figures/fig_2.2a.pdf  used on input line 332.
 <figures/fig_2.2b.pdf, id=1239, 817.4879pt x 371.3712pt>
 File: figures/fig_2.2b.pdf Graphic file (type pdf)
 <use figures/fig_2.2b.pdf>
-Package pdftex.def Info: figures/fig_2.2b.pdf  used on input line 344.
+Package pdftex.def Info: figures/fig_2.2b.pdf  used on input line 352.
 (pdftex.def)             Requested size: 386.96027pt x 175.79114pt.
 
 
-[16 <./figures/fig_2.2a.pdf> <./figures/fig_2.2b.pdf>]
-<figures/fig_2.2c.pdf, id=1388, 815.74323pt x 371.3712pt>
+[16 <./figures/fig_2.2a.pdf>]
+<figures/fig_2.2c.pdf, id=1335, 815.74323pt x 371.3712pt>
 File: figures/fig_2.2c.pdf Graphic file (type pdf)
 <use figures/fig_2.2c.pdf>
-Package pdftex.def Info: figures/fig_2.2c.pdf  used on input line 356.
+Package pdftex.def Info: figures/fig_2.2c.pdf  used on input line 368.
 (pdftex.def)             Requested size: 386.96027pt x 176.16515pt.
 
 
-[17 <./figures/fig_2.2c.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 387--388
-
- []
-
-
+[17 <./figures/fig_2.2b.pdf> <./figures/fig_2.2c.pdf>]
 
 [18]
 
-[19] (./report.aux)
+[19]
+
+[20]
+
+[21] (./report.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -874,18 +873,18 @@ Package rerunfilecheck Info: File `report.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 22239 strings out of 473190
- 413986 string characters out of 5715800
- 785972 words of memory out of 5000000
+ 22241 strings out of 473190
+ 414000 string characters out of 5715800
+ 786970 words of memory out of 5000000
  45079 multiletter control sequences out of 15000+600000
  568163 words of font info for 72 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,6n,91p,1098b,590s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,6n,91p,1569b,590s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on report.pdf (20 pages, 15049984 bytes).
+Output written on report.pdf (22 pages, 15057632 bytes).
 PDF statistics:
- 1545 PDF objects out of 1728 (max. 8388607)
- 497 compressed objects within 5 object streams
- 77 named destinations out of 1000 (max. 500000)
+ 1555 PDF objects out of 1728 (max. 8388607)
+ 504 compressed objects within 6 object streams
+ 79 named destinations out of 1000 (max. 500000)
  133 words of extra memory for PDF output out of 10000 (max. 10000000)
 
