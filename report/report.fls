@@ -228,10 +228,10 @@ INPUT ./report.out
 INPUT ./report.out
 INPUT report.out
 INPUT report.out
+OUTPUT report.pdf
 INPUT ./report.out
 INPUT ./report.out
 OUTPUT report.out
-OUTPUT report.pdf
 INPUT ./logos/university.png
 INPUT ./logos/university.png
 INPUT ./logos/university.png
