@@ -19,6 +19,14 @@ htmlcov/
 # Sphinx documentation
 docs/_build/
 
+# LaTeX build files
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex*
+
 # Jupyter
 .ipynb_checkpoints/
 

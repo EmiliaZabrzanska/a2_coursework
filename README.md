@@ -7,7 +7,7 @@ Taught by Dr. A. Biguri, Dr. J. Kaggie, Dr. L. Escudero Sánchez
 
 This repository contains the code and written answers for the A2 Minor Module Coursework on Data Science Applications to Medical Imaging.
 
-The analysis notebook is `solution.ipynb` and the written report is in `report/`.
+The analysis notebook with all code and all written solution is `solution.ipynb` from which the written report was generated in `report/`.
 
 The coursework covers three modules:
 - **Module 1:** Tomographic Reconstruction (CT)
