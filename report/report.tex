@@ -310,17 +310,15 @@ The complex k-space data was loaded from \texttt{knee.npy}.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.95\textwidth]{figures/fig_2.1b.pdf}
+    \includegraphics[width=0.7\textwidth]{figures/fig_2.1b.pdf}
     \caption{Log-scaled k-space magnitude for all six coils.}
 \end{figure}
 
 \subsubsection*{(c) Image space: magnitude and phase}
 
-The data was transformed to image space using the 2D inverse FFT applied independently to each coil.
-
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.85\textwidth]{figures/fig_2.1c.pdf}
+    \includegraphics[width=0.7\textwidth]{figures/fig_2.1c.pdf}
     \caption{Magnitude and phase images from coil~1.}
 \end{figure}
 
@@ -330,7 +328,7 @@ The data was transformed to image space using the 2D inverse FFT applied indepen
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.95\textwidth]{figures/fig_2.1d.pdf}
+    \includegraphics[width=0.7\textwidth]{figures/fig_2.1d.pdf}
     \caption{Magnitude images for all six coils.}
 \end{figure}
 
@@ -342,18 +340,30 @@ The coils were combined using root-sum-of-squares
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{figures/fig_2.1e.pdf}
+    \includegraphics[width=0.5\textwidth]{figures/fig_2.1e.pdf}
     \caption{Root-sum-of-squares combined image.}
 \end{figure}
 
-\noindent The combined image shows more complete and uniform coverage compared to individual coils, with no cancellations from differing intensity ranges.
+\noindent The combined image is more complete and uniform compared to individual coils.
 
 \subsubsection*{(f) Observations}
 
-\noindent The k-space magnitude is visually similar across coils, with bright centres (low spatial frequencies encoding overall brightness) and rapidly decreasing signal towards edges (high frequencies encoding fine detail). \texttt{np.log1p()} scaling was necessary as the dynamic range is too large to visualise without it. Coil~6 shows a horizontal line artefact (likely a spike artefact from electrical discharge), and Coil~4 has a small artefact in the bottom left. \\
+\noindent The k-space magnitude for each coil is visually very similar. The centre is very bright, and corresponds to low spatial frequencies. 
+The signal intensiy decreases rapidly towards the edges, which represent the high frequencies responsible for finer, noiser details. 
+While each coil has a slightly different signal intensity as shown by the colour bars, they all follow the same structure apart from coil 6, which has a horizontal line artefact running through the image. 
+This is potentially a spike artefact, which can be caused by electrical discharge. 
+Coil 4 also has a small artefact in the bottom left of the image. \\
 
-\noindent The image-space magnitudes show different regions of peak brightness corresponding to each coil's physical position, consistent with the sensitivity profiles described in lecture material. The combined rSoS image achieves uniform coverage without cancellations from differing intensity scales. The quality of Coils~4 and~6 is worse than the others, which may correspond to the artefacts observed in their k-space. \\
+\noindent For the magnitude and phase plot, I chose to plot coil 1 (with index 0). 
+The magnitude plot shows the knee anatomy in image space, with signal brightest in the central region of the image and fading out towards the edges. 
+The phase image shows a smooth gradient across the tissue region, which reflects the coil's phase offset and spatial encoding gradients. 
+In the background the phase is random and dominated by noise, producing a salt and pepper pattern.\\
 
+\noindent The image space magnitudes for each coil produce images of a knee MRI, but with different regions of peak brightness corresponding to the physical position in the receiver array. 
+This reflects the idea described in Lecture 5, that each coil contributes signal mostly from the tissue closest to it, and noise everywhere else. 
+The colour bars for each figure differ greatly, with Coil 3 peaking at 0.25, while Coil 6 peaks at around 8 (in arbitraty units).\\
+
+\noindent The combined image obtained from a root sum of squares calculation shows a more complete and uniform image when compared to the individual coil magnitudes, and has better coverage across the entire field of view. 
 % ──────────────────────────────────────────────
 \subsection*{Exercise 2.2: Removing Noise}
 

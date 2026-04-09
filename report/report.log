@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.11.5)  9 APR 2026 00:55
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.11.5)  9 APR 2026 01:01
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -789,146 +789,129 @@ Underfull \hbox (badness 10000) in paragraph at lines 293--295
 File: figures/fig_2.1b.pdf Graphic file (type pdf)
 <use figures/fig_2.1b.pdf>
 Package pdftex.def Info: figures/fig_2.1b.pdf  used on input line 313.
-(pdftex.def)             Requested size: 432.48051pt x 267.44536pt.
+(pdftex.def)             Requested size: 318.66948pt x 197.06285pt.
 <figures/fig_2.1c.pdf, id=989, 817.4879pt x 371.3712pt>
 File: figures/fig_2.1c.pdf Graphic file (type pdf)
 <use figures/fig_2.1c.pdf>
-Package pdftex.def Info: figures/fig_2.1c.pdf  used on input line 323.
-(pdftex.def)             Requested size: 386.96027pt x 175.79114pt.
+Package pdftex.def Info: figures/fig_2.1c.pdf  used on input line 321.
+(pdftex.def)             Requested size: 318.66948pt x 144.76617pt.
 
 
 [11 <./figures/fig_2.1b.pdf>]
 <figures/fig_2.1d.pdf, id=1064, 1076.35414pt x 664.5053pt>
 File: figures/fig_2.1d.pdf Graphic file (type pdf)
 <use figures/fig_2.1d.pdf>
-Package pdftex.def Info: figures/fig_2.1d.pdf  used on input line 333.
-(pdftex.def)             Requested size: 432.48051pt x 266.99387pt.
+Package pdftex.def Info: figures/fig_2.1d.pdf  used on input line 331.
+(pdftex.def)             Requested size: 318.66948pt x 196.73712pt.
 <figures/fig_2.1e.pdf, id=1065, 486.8827pt x 426.66255pt>
 File: figures/fig_2.1e.pdf Graphic file (type pdf)
 <use figures/fig_2.1e.pdf>
-Package pdftex.def Info: figures/fig_2.1e.pdf  used on input line 345.
-(pdftex.def)             Requested size: 273.14923pt x 239.36559pt.
+Package pdftex.def Info: figures/fig_2.1e.pdf  used on input line 343.
+(pdftex.def)             Requested size: 227.62206pt x 199.47023pt.
 
 
 [12 <./figures/fig_2.1c.pdf> <./figures/fig_2.1d.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 353--354
+Underfull \hbox (badness 10000) in paragraph at lines 351--356
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 355--356
+Underfull \hbox (badness 10000) in paragraph at lines 357--361
 
  []
 
-<figures/fig_2.2a.pdf, id=1188, 1290.82568pt x 887.9513pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 362--365
+
+ []
+
+<figures/fig_2.2a.pdf, id=1189, 1290.82568pt x 887.9513pt>
 File: figures/fig_2.2a.pdf Graphic file (type pdf)
 <use figures/fig_2.2a.pdf>
-Package pdftex.def Info: figures/fig_2.2a.pdf  used on input line 366.
+Package pdftex.def Info: figures/fig_2.2a.pdf  used on input line 376.
 (pdftex.def)             Requested size: 432.48051pt x 297.496pt.
 
 
 [13 <./figures/fig_2.1e.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 370--371
+Underfull \hbox (badness 10000) in paragraph at lines 380--381
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 372--373
+Underfull \hbox (badness 10000) in paragraph at lines 382--383
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 374--375
+Underfull \hbox (badness 10000) in paragraph at lines 384--385
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 376--377
+Underfull \hbox (badness 10000) in paragraph at lines 386--387
 
  []
 
 <figures/fig_2.2b.pdf, id=1239, 817.4879pt x 371.3712pt>
 File: figures/fig_2.2b.pdf Graphic file (type pdf)
 <use figures/fig_2.2b.pdf>
-Package pdftex.def Info: figures/fig_2.2b.pdf  used on input line 386.
+Package pdftex.def Info: figures/fig_2.2b.pdf  used on input line 396.
 (pdftex.def)             Requested size: 386.96027pt x 175.79114pt.
 
 
 [14 <./figures/fig_2.2a.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 390--391
+Underfull \hbox (badness 10000) in paragraph at lines 400--401
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 392--393
+Underfull \hbox (badness 10000) in paragraph at lines 402--403
 
  []
 
 <figures/fig_2.2c.pdf, id=1334, 815.74323pt x 371.3712pt>
 File: figures/fig_2.2c.pdf Graphic file (type pdf)
 <use figures/fig_2.2c.pdf>
-Package pdftex.def Info: figures/fig_2.2c.pdf  used on input line 402.
+Package pdftex.def Info: figures/fig_2.2c.pdf  used on input line 412.
 (pdftex.def)             Requested size: 386.96027pt x 176.16515pt.
 
 
 [15 <./figures/fig_2.2b.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 410--411
+Underfull \hbox (badness 10000) in paragraph at lines 420--421
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 412--413
+Underfull \hbox (badness 10000) in paragraph at lines 422--423
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 414--415
+Underfull \hbox (badness 10000) in paragraph at lines 424--425
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 416--417
+Underfull \hbox (badness 10000) in paragraph at lines 426--427
 
  []
 
 
 
 [16 <./figures/fig_2.2c.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 437--438
+Underfull \hbox (badness 10000) in paragraph at lines 447--448
 
  []
 
 
 
 [17]
-Underfull \hbox (badness 10000) in paragraph at lines 443--444
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 445--446
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 447--448
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 449--450
-
- []
-
-
-
-[18]
-Underfull \hbox (badness 10000) in paragraph at lines 451--452
-
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 453--454
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 455--456
 
  []
 
@@ -939,6 +922,28 @@ Underfull \hbox (badness 10000) in paragraph at lines 457--458
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 459--460
+
+ []
+
+
+
+[18]
+Underfull \hbox (badness 10000) in paragraph at lines 461--462
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 463--464
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 467--468
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 469--470
 
  []
 
@@ -957,13 +962,13 @@ Package rerunfilecheck Info: File `report.out' has not changed.
 Here is how much of TeX's memory you used:
  22247 strings out of 473190
  414087 string characters out of 5715800
- 786994 words of memory out of 5000000
+ 785994 words of memory out of 5000000
  45084 multiletter control sequences out of 15000+600000
  568163 words of font info for 72 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,7n,91p,1581b,590s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on report.pdf (21 pages, 15055524 bytes).
+Output written on report.pdf (21 pages, 15055500 bytes).
 PDF statistics:
  1560 PDF objects out of 1728 (max. 8388607)
  510 compressed objects within 6 object streams
