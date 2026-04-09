@@ -15,6 +15,8 @@ The coursework covers three modules:
 - **Module 3:** Image Segmentation Methods (literature review)
 
 ## Repository Structure
+
+```
 eaz21/
 ├── medical_imaging/                   # Installable Python package
 │   ├── init.py
@@ -38,6 +40,8 @@ eaz21/
 ├── README.md
 ├── pyproject.toml                     # Package configuration and dependencies
 └── solution.ipynb                     # Analysis notebook (all modules)
+```
+
 
 ## Installation
 
